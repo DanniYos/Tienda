@@ -1,0 +1,16 @@
+			Conceptos aplicados de JAKARTA EE
+-Conexion a bases de datos
+-Filtros
+-Repositorys
+-Clases service
+-Servlets
+-Patron de diseno DAO
+-Jsp
+-JSTL
+-Pool de Conexiones
+-CDI
+
+Descripcion
+El proyecto se puede encontrar un crud completo de productos con categorias
+que integra un carrito de compras y un ingreso al inventario de los productos
+
