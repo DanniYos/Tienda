@@ -1,7 +1,7 @@
 package org.dan.webapp.apiservlet.headers.repositories;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-import jakarta.inject.Named;
+import org.dan.webapp.apiservlet.headers.configs.MysqlConn;
 import org.dan.webapp.apiservlet.headers.models.Categoria;
 import org.dan.webapp.apiservlet.headers.models.Producto;
 
@@ -11,8 +11,9 @@ import java.util.List;
 
 @ApplicationScoped
 public class ProductoRepositortyJDBCImpl implements Repository<Producto> {
+
     @Inject
-    @Named("conn")
+    @MysqlConn
     private Connection conn;
 
     @Override

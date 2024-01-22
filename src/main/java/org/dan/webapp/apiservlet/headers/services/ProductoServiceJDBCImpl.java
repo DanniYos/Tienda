@@ -2,6 +2,7 @@ package org.dan.webapp.apiservlet.headers.services;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import org.dan.webapp.apiservlet.headers.configs.ProductoServicePrincipal;
 import org.dan.webapp.apiservlet.headers.models.Categoria;
 import org.dan.webapp.apiservlet.headers.models.Producto;
 import org.dan.webapp.apiservlet.headers.repositories.Repository;
@@ -12,6 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @ApplicationScoped
+@ProductoServicePrincipal
 public class ProductoServiceJDBCImpl implements ProductoService{
 
     @Inject

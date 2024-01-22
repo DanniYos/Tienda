@@ -19,7 +19,7 @@ public class ProducerResources {
 
     @Produces
     @RequestScoped
-    @Named("conn")
+    @MysqlConn
     private Connection beanConection() throws NamingException, SQLException {
 //        Context initContext = new InitialContext();
 //        Context envContext = (Context) initContext.lookup("java:/comp/env");

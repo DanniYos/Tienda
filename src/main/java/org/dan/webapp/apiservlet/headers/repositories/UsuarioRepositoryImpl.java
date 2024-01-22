@@ -2,7 +2,7 @@ package org.dan.webapp.apiservlet.headers.repositories;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-import jakarta.inject.Named;
+import org.dan.webapp.apiservlet.headers.configs.MysqlConn;
 import org.dan.webapp.apiservlet.headers.models.Usuario;
 
 import java.sql.*;
@@ -13,7 +13,7 @@ import java.util.List;
 public class UsuarioRepositoryImpl implements UsuarioRepository{
 
     @Inject
-    @Named("conn")
+    @MysqlConn
     private Connection conn;
 
     @Override
