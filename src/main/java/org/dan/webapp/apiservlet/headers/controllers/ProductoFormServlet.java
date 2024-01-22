@@ -1,5 +1,6 @@
 package org.dan.webapp.apiservlet.headers.controllers;
 
+import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -23,10 +24,10 @@ import java.util.Optional;
 
 @WebServlet("/productos/form")
 public class ProductoFormServlet extends HttpServlet {
+    @Inject
+    private ProductoService service;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Connection conn = (Connection) req.getAttribute("conn");
-        ProductoService service = new ProductoServiceJDBCImpl(conn);
         List<Categoria> categorias = service.listarCategoria();
         Long id;
         try {
@@ -54,8 +55,6 @@ public class ProductoFormServlet extends HttpServlet {
     //se obtiene el id de la categoria y de esa forma se relacion
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Connection conn = (Connection) req.getAttribute("conn");
-        ProductoService service = new ProductoServiceJDBCImpl(conn);
         String nombre = req.getParameter("nombre");
         Integer precio;
         try {

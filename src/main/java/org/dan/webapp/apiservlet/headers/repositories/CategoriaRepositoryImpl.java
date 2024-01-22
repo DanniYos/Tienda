@@ -1,16 +1,23 @@
 package org.dan.webapp.apiservlet.headers.repositories;
 
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import org.dan.webapp.apiservlet.headers.models.Categoria;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@ApplicationScoped
 public class CategoriaRepositoryImpl implements Repository<Categoria> {
+
 
     private Connection conn;
 
-    public CategoriaRepositoryImpl(Connection conn) {
+    @Inject
+    public CategoriaRepositoryImpl(@Named("conn") Connection conn) {
         this.conn = conn;
     }
 

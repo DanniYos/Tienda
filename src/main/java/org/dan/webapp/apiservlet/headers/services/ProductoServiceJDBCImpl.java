@@ -1,10 +1,9 @@
 package org.dan.webapp.apiservlet.headers.services;
 
-import jakarta.faces.flow.builder.ReturnBuilder;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import org.dan.webapp.apiservlet.headers.models.Categoria;
 import org.dan.webapp.apiservlet.headers.models.Producto;
-import org.dan.webapp.apiservlet.headers.repositories.CategoriaRepositoryImpl;
-import org.dan.webapp.apiservlet.headers.repositories.ProductoRepositortyJDBCImpl;
 import org.dan.webapp.apiservlet.headers.repositories.Repository;
 
 import java.sql.Connection;
@@ -12,15 +11,13 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+@ApplicationScoped
 public class ProductoServiceJDBCImpl implements ProductoService{
 
+    @Inject
     private Repository<Producto> productoRepository;
+    @Inject
     private Repository<Categoria> categoriaRepository;
-
-    public ProductoServiceJDBCImpl(Connection conn) {
-        this.productoRepository = new ProductoRepositortyJDBCImpl(conn);
-        this.categoriaRepository = new CategoriaRepositoryImpl(conn);
-    }
 
     @Override
     public List<Producto> listar() {

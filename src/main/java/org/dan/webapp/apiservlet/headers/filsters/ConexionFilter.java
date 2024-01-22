@@ -25,7 +25,7 @@ public class ConexionFilter implements Filter {
                 connectionRequest.setAutoCommit(false);
             }
             try{
-                request.setAttribute("conn", connectionRequest);
+//                request.setAttribute("conn", connectionRequest);
                 chain.doFilter(request, response);
                 connectionRequest.commit();
             }catch (SQLException | ServiceJDBCExeption e){
