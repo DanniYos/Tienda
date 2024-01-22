@@ -1,5 +1,6 @@
 package org.dan.webapp.apiservlet.headers.controllers;
 
+import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
@@ -13,9 +14,13 @@ import java.util.Optional;
 
 @WebServlet({"/login", "/login.html"})
 public class LoginServlet extends HttpServlet {
+    @Inject
+    private UsuarioService service;
+
+    @Inject
+    private LoginService auth;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        LoginService auth = new LoginServiceSecionImpl();
         Optional<String> optionalUsername = auth.getUserName(req);
         if (optionalUsername.isPresent()) {
             resp.setContentType("text/html;charset=UTF-8");
@@ -43,8 +48,6 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
-        Connection conn = (Connection) req.getAttribute("conn");
-        UsuarioService service = new UsuarioServiceImpl(conn);
         Optional<Usuario> usuarioOptional = service.login(username, password);
         if (usuarioOptional.isPresent()) {
             HttpSession session = req.getSession();

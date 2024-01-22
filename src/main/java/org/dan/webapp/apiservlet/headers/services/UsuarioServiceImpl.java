@@ -1,5 +1,8 @@
 package org.dan.webapp.apiservlet.headers.services;
 
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import org.dan.webapp.apiservlet.headers.models.Usuario;
 import org.dan.webapp.apiservlet.headers.repositories.Repository;
 import org.dan.webapp.apiservlet.headers.repositories.UsuarioRepository;
@@ -10,12 +13,10 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+@ApplicationScoped
 public class UsuarioServiceImpl implements UsuarioService{
+    @Inject
     private UsuarioRepository usuarioRepository;
-
-    public UsuarioServiceImpl(Connection conn) {
-        this.usuarioRepository = new UsuarioRepositoryImpl(conn);
-    }
 
     @Override
     public Optional<Usuario> login(String username, String password) {

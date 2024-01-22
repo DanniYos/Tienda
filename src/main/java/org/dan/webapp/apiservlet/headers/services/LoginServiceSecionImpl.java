@@ -1,10 +1,12 @@
 package org.dan.webapp.apiservlet.headers.services;
 
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 import java.util.Optional;
 
+@ApplicationScoped
 public class LoginServiceSecionImpl implements LoginService{
 
     @Override

@@ -16,11 +16,12 @@ import java.util.Optional;
 @WebServlet({"/productos", "/productos.html"})
 public class ProductoServlet extends HttpServlet {
     @Inject
+    private LoginService auth;
+    @Inject
     private ProductoService service;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Producto> productos = service.listar();
-        LoginService auth = new LoginServiceSecionImpl();
         Optional<String> usernameOptional = auth.getUserName(req);
         req.setAttribute("productos", productos);
         req.setAttribute("username", usernameOptional);

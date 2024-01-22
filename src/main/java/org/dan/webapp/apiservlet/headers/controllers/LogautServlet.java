@@ -1,5 +1,6 @@
 package org.dan.webapp.apiservlet.headers.controllers;
 
+import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
@@ -12,9 +13,11 @@ import java.util.Optional;
 
 @WebServlet("/logaut")
 public class LogautServlet extends HttpServlet {
+
+    @Inject
+    private LoginService auth;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        LoginService auth = new LoginServiceSecionImpl();
         Optional<String> username = auth.getUserName(req);
         if (username.isPresent()){
             HttpSession session = req.getSession();
