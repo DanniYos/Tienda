@@ -2,6 +2,7 @@ package org.dan.webapp.apiservlet.headers.repositories;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import org.dan.webapp.apiservlet.headers.configs.MysqlConn;
+import org.dan.webapp.apiservlet.headers.configs.Repositorio;
 import org.dan.webapp.apiservlet.headers.models.Categoria;
 import org.dan.webapp.apiservlet.headers.models.Producto;
 
@@ -9,7 +10,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@ApplicationScoped
+@Repositorio
 public class ProductoRepositortyJDBCImpl implements Repository<Producto> {
 
     @Inject
