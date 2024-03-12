@@ -1,5 +1,6 @@
 			Conceptos aplicados de JAKARTA EE
--Conexion a bases de datos
+-Servidor de aplicaciones Tomcat, version 7 o superior
+-Conexion a bases de datos, MYSQL
 -Filtros
 -Repositorys
 -Clases service
